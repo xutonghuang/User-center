@@ -16,10 +16,11 @@ import {
   ProFormCheckbox,
   ProFormText,
 } from '@ant-design/pro-components';
-import {Alert, message, Tabs} from 'antd';
+import {Alert, Button, Divider, message, Space, Tabs} from 'antd';
 import React, {useState} from 'react';
-import {history, useModel} from 'umi';
+import {history, Link, useModel} from 'umi';
 import styles from './index.less';
+
 
 const LoginMessage: React.FC<{
   content: string;
@@ -139,17 +140,21 @@ const Login: React.FC = () => {
               marginBottom: 24,
             }}
           >
-            <ProFormCheckbox noStyle name="autoLogin">
-              自动登录
-            </ProFormCheckbox>
-            <a
-              style={{
-                float: 'right',
-              }}
-            >
-              忘记密码请联系管理员
-            </a>
+            <Space split={<Divider type="vertical" />} align="center">
+              <ProFormCheckbox noStyle name="autoLogin">
+                自动登录
+              </ProFormCheckbox>
+              <Link to="/user/register">新用户注册</Link>
+              <a
+                style={{
+                  float: 'right',
+                }}
+              >
+                忘记密码
+              </a>
+            </Space>
           </div>
+
         </LoginForm>
       </div>
       <Footer/>
