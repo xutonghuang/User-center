@@ -1,25 +1,16 @@
 import Footer from '@/components/Footer';
 import {login} from '@/services/ant-design-pro/api';
-import {getFakeCaptcha} from '@/services/ant-design-pro/login';
-import {SYSTEM_LOGO} from '@/constants';
+import {PLANET_LINK, SYSTEM_LOGO} from '@/constants';
 import {
-  AlipayCircleOutlined,
   LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
   UserOutlined,
-  WeiboCircleOutlined,
 } from '@ant-design/icons';
-import {
-  LoginForm,
-  ProFormCaptcha,
-  ProFormCheckbox,
-  ProFormText,
-} from '@ant-design/pro-components';
-import {Alert, Button, Divider, message, Space, Tabs} from 'antd';
+import {Alert, Divider, message, Space, Tabs} from 'antd';
 import React, {useState} from 'react';
-import {history, Link, useModel} from 'umi';
+import {history, useModel} from 'umi';
 import styles from './index.less';
+import {Link} from "@umijs/preset-dumi/lib/theme";
+import {ProFormCheckbox, ProFormText, LoginForm} from '@ant-design/pro-form';
 
 
 const LoginMessage: React.FC<{
@@ -68,12 +59,13 @@ const Login: React.FC = () => {
         return;
       }
       setUserLoginState(user);
+      const {status, type: loginType} = userLoginState;
     } catch (error) {
       const defaultLoginFailureMessage = '登录失败，请重试！';
       message.error(defaultLoginFailureMessage);
     }
   };
-  const {status, type: loginType} = userLoginState;
+  // const {status, type: loginType} = userLoginState;
   return (
     <div className={styles.container}>
       <div className={styles.content}>
