@@ -10,8 +10,10 @@ import {stringify} from "querystring";
 /**
  * 配置request请求时的默认参数
  */
+// 'http://user-backend.code-nav.cn'
 const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
+  prefix: process.env.NODE_ENV === 'production' ? 'http://47.120.13.229:8000' : undefined
   // requestType: 'form',
 });
 
